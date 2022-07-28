@@ -6,11 +6,12 @@ const {
 } = require('@rnx-kit/metro-serializer-esbuild');
 
 module.exports = makeMetroConfig({
+  resetCache: true,
   resolver: {
     resolveRequest: MetroSymlinksResolver(),
   },
   serializer: {
-    customSerializer: MetroSerializer(),
+    customSerializer: MetroSerializer([], { target: "es6" }),
   },
   transformer: esbuildTransformerConfig,
   // Add your existing Metro configuration here! It will be merged in.
